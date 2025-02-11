@@ -5,12 +5,24 @@ import {View, Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from '../Screens/AuthScreen/LoginScreen';
 import GetStartedScreen from '../Screens/AuthScreen/GetStartedScreen';
+import GraphScreen from '../Screens/GraphScreen/GraphScreen';
+import MultiGraph from '../Screens/GraphScreen/MultiGraph';
 
 const Stack = createStackNavigator();
 
 function StackNavigation() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="MultiGraph"
+        component={MultiGraph}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Graph"
+        component={GraphScreen}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="GetStart"
         component={GetStartedScreen}
