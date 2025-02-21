@@ -7,6 +7,7 @@ import LoginScreen from '../Screens/AuthScreen/LoginScreen';
 import GetStartedScreen from '../Screens/AuthScreen/GetStartedScreen';
 import GraphScreen from '../Screens/GraphScreen/GraphScreen';
 import MultiGraph from '../Screens/GraphScreen/MultiGraph';
+import DashBoard from '../Screens/DashBoard';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,11 @@ function StackNavigation() {
       <Stack.Screen
         name="Login"
         component={LoginScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DashBoard"
+        component={DashBoard}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
