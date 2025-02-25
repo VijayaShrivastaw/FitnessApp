@@ -1,16 +1,20 @@
 import * as React from 'react';
+import {
+  responsiveHeight,
+  responsiveWidth,
+} from 'react-native-responsive-dimensions';
 import Svg, {G, Path} from 'react-native-svg';
 const Lock = props => (
   <Svg
-    fill="rgba(253, 192, 192, 0.76)"
-    height="50"
-    width="50"
+    // fill="rgba(253, 192, 192, 0.76)"
+    fill={'rgba(0, 0, 0, 0.65)'}
+    height={responsiveHeight(15)}
+    width={responsiveWidth(25)}
     id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 330 330"
-    xmlSpace="preserve"
-    {...props}>
+    xmlSpace="preserve">
     <G id="XMLID_504_">
       <Path
         id="XMLID_505_"

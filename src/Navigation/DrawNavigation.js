@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Button} from 'react-native-paper';
 import ProfileScreen from '../Screens/ProfileScreen';
 import DashBoard from '../Screens/DashBoard';
+import BlurScreen from '../Blur/BlurScreen';
 const Drawer = createDrawerNavigator();
 
 export default function DrawNavigation() {

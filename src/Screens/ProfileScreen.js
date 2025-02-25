@@ -1,4 +1,11 @@
-import {View, Text, Dimensions, Image, ActivityIndicator} from 'react-native';
+import {
+  View,
+  Text,
+  Dimensions,
+  Image,
+  ActivityIndicator,
+  Platform,
+} from 'react-native';
 import React, {useState} from 'react';
 import {
   Tabs,
@@ -12,6 +19,8 @@ import {
   Tab,
 } from 'react-native-collapsible-tab-view';
 import {BlurView} from '@react-native-community/blur';
+import Entypo from 'react-native-vector-icons/Entypo';
+import LinearGradient from 'react-native-linear-gradient';
 
 import {
   responsiveFontSize,
@@ -260,6 +269,7 @@ export default function ProfileScreen() {
       <Tabs.Tab name="RToR Listing">
         <>
           <Tabs.FlatList
+            // scrollEnabled={!isLoading}
             data={villa}
             contentContainerStyle={{
               // backgroundColor: 'red',
@@ -271,36 +281,170 @@ export default function ProfileScreen() {
             // keyExtractor={identity}
           />
           {isLoading && (
-            <BlurView
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                justifyContent: 'center',
-                alignItems: 'center',
-                // paddingTop:responsiveHeight
-              }}
-              blurType="dark"
-              blurAmount={1}
-              reducedTransparencyFallbackColor="white">
+            <>
+              {/* <BlurView
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  // paddingTop:responsiveHeight
+                }}
+                blurType="dark"
+                blurAmount={1}
+                reducedTransparencyFallbackColor="white">
+                <View
+                  style={{
+                    paddingTop: responsiveHeight(10),
+                  }}>
+                  <Lock />
+                </View>
+                <Text
+                  style={{
+                    color: 'rgba(253, 192, 192, 0.76)',
+                    marginTop: 10,
+                    fontSize: responsiveFontSize(2),
+                  }}>
+                  Loading...
+                </Text>
+              </BlurView> */}
               <View
                 style={{
-                  paddingTop: responsiveHeight(10),
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}>
-                <Lock />
+                <BlurView
+                  style={{
+                    position: 'absolute',
+                    width: width,
+                    height: height,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  blurType="dark"
+                  blurAmount={Platform.os === 'ios' ? 4 : 1}
+                  reducedTransparencyFallbackColor="black"
+                />
+                <View
+                  style={{
+                    // backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                    backgroundColor: 'rgba(253, 192, 192, 0.2)',
+                    width: width * 0.7,
+                    height:
+                      Platform.os === 'ios'
+                        ? responsiveHeight(30)
+                        : responsiveHeight(35),
+                    borderRadius: responsiveWidth(50),
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginTop: responsiveHeight(16),
+                    shadowColor: '#000', // Shadow color
+                    shadowOffset: {width: 0, height: 10}, // Position of shadow
+                    shadowOpacity: 0.3, // Transparency
+                    shadowRadius: 15, // Blur radius
+                    elevation: 1,
+                  }}>
+                  <LinearGradient
+                    // colors={['rgba(253, 192, 192, 0.76)', '#ff3131']}
+                    colors={[
+                      'rgba(253, 192, 192, 0.3)',
+                      'rgba(255, 49, 49, 0.2)',
+                    ]}
+                    start={{x: 1, y: 0}}
+                    end={{x: 0, y: 0}}
+                    style={{
+                      // backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                      backgroundColor: 'rgba(253, 192, 192, 0.2)',
+                      width: width * 0.7,
+                      height:
+                        Platform.os === 'ios'
+                          ? responsiveHeight(30)
+                          : responsiveHeight(35),
+                      borderRadius: responsiveWidth(50),
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      // marginTop: responsiveHeight(16),
+                    }}>
+                    {/* <Entypo
+                      name="lock"
+                      size={responsiveHeight(15)}
+                      // color="rgba(253, 192, 192, 0.5)"
+                      color="rgba(0, 0, 0, 0.65)"
+                    /> */}
+                    <Lock />
+                    <Text
+                      style={{
+                        // color: 'rgba(253, 192, 192, 0.76)',
+                        // color: 'rgba(0,0,0,0.8)',
+                        color: '#000',
+                        marginTop: 4,
+                        fontWeight: '400',
+                        fontSize: responsiveFontSize(3),
+                      }}>
+                      Loading...
+                    </Text>
+                  </LinearGradient>
+                </View>
               </View>
-              {/* <ActivityIndicator size="large" color="#000" /> */}
-              <Text
+              {/* <View
                 style={{
-                  color: 'rgba(253, 192, 192, 0.76)',
-                  marginTop: 10,
-                  fontSize: responsiveFontSize(2),
+                  // backgroundColor: 'green',
+                  position: 'absolute',
+                  // top: height * 0.5,
+                  height: height * 0.7,
+                  // backgroundColor: 'red',
+                  top: responsiveHeight(25),
+                  // left: width * 0.4,
+                  justifyContent: 'center',
+                  width: width,
+                  alignItems: 'center',
                 }}>
-                Loading...
-              </Text>
-            </BlurView>
+                <View
+                  style={{
+                    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                    width: width * 0.7,
+                    height:
+                      Platform.os === 'android'
+                        ? responsiveHeight(40)
+                        : responsiveHeight(30),
+                    borderRadius: responsiveWidth(50),
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <View
+                    style={{
+                      width: responsiveWidth(50),
+                      height: responsiveHeight(15),
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      // backgroundColor: 'green',
+                    }}>
+                    <Entypo
+                      name="lock"
+                      size={responsiveHeight(15)}
+                      color="rgba(253, 192, 192, 0.5)"
+                    />
+                  </View>
+
+                  <Text
+                    style={{
+                      color: 'rgba(253, 192, 192, 0.76)',
+                      // marginTop: responsiveHeight(0.7),
+                      fontSize: responsiveFontSize(2),
+                    }}>
+                    Loading...
+                  </Text>
+                </View>
+              </View> */}
+            </>
           )}
         </>
       </Tabs.Tab>
