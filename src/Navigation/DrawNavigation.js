@@ -6,16 +6,12 @@ import {Button} from 'react-native-paper';
 import ProfileScreen from '../Screens/ProfileScreen';
 import DashBoard from '../Screens/DashBoard';
 import BlurScreen from '../Blur/BlurScreen';
+import HomeScreen from '../Screens/BottomTabScreen.js/HomeScreen';
+import DataScreen from '../Screens/BottomTabScreen.js/DataScreen';
+import ProviderScreen from '../Screens/BottomTabScreen.js/ProviderScreen';
 const Drawer = createDrawerNavigator();
 
 export default function DrawNavigation() {
-  const HomeScreen = ({navigation}) => {
-    <View>
-      <Text>Home Screen</Text>
-      {/* <Button title="Open Drawer" onPress={() => navigation.openDrawer()} /> */}
-    </View>;
-  };
-
   return (
     <NavigationContainer>
       <Drawer.Navigator
@@ -38,6 +34,16 @@ export default function DrawNavigation() {
         <Drawer.Screen
           name="DashBoard"
           component={DashBoard}
+          options={{headerShown: false}}
+        />
+        <Drawer.Screen
+          name="DataScreen"
+          component={DataScreen}
+          options={{headerShown: false}}
+        />
+        <Drawer.Screen
+          name="ProviderScreen"
+          component={ProviderScreen}
           options={{headerShown: false}}
         />
       </Drawer.Navigator>
